@@ -59,3 +59,31 @@ select substring(surname,1,1) letter, count(substring(surname,1,1)) from cd.memb
 
 --Ans7:
 select memid,translate(telephone, '-() ','') telephone  from cd.members order by memid
+
+
+--Date Function:
+--Ans1:
+select timestamp '2012-08-31 01:00:00';
+
+--Ans2:
+select timestamp '2012-08-31 01:00:00' - timestamp '2012-07-30 01:00:00' as interval;
+
+--Ans3:
+--select generate_series(timestamp '2012-10-01', timestamp '2012-10-31', interval '1 day') as ts;
+
+--Ans4:
+select EXTRACT(DAY from timestamp '2012-08-31')
+
+--Ans5:
+-- select 	extract(month from cal.month) as month,
+--           (cal.month + interval '1 month') - cal.month as length
+-- from
+--     (
+--         select generate_series(timestamp '2012-01-01', timestamp '2012-12-01', interval '1 month') as month
+--     ) cal
+-- order by month;
+
+--Ans6:
+-- select (date_trunc('month',ts.testts) + interval '1 month')
+--            - date_trunc('day', ts.testts) as remaining
+-- from (select timestamp '2012-02-11 01:00:00' as testts) ts
