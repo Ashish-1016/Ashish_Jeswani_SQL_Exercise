@@ -85,5 +85,18 @@ select EXTRACT(DAY from timestamp '2012-08-31')
 
 --Ans6:
 -- select (date_trunc('month',ts.testts) + interval '1 month')
---            - date_trunc('day', ts.testts) as remaining
+-- - date_trunc('day', ts.testts) as remaining
 -- from (select timestamp '2012-02-11 01:00:00' as testts) ts
+
+--Ans7;
+select starttime, starttime + slots*(interval '30 minutes') endtime from cd.bookings
+order by endtime desc, starttime desc
+limit 10
+
+--Ans8:
+select date_trunc('month', starttime) as month, count(*) from cd.bookings
+group by month
+order by month
+
+--Ans9:
+-----
